@@ -52,17 +52,24 @@
           <input type="hidden" id="productId" value="">
           <div><label>Ürün Adı *</label><input type="text" id="prodName" required></div>
           <div><label>Kategori</label>
-            <select id="prodCategory">
-              <option>Pasta</option><option>Börek</option><option>Kurabiye</option>
-              <option>Tatlı</option><option>Özel Tasarım</option><option>Diğer</option>
-            </select>
+            <div class="category-row">
+              <select id="prodCategory">
+                <option>Pasta</option><option>Börek</option><option>Kurabiye</option>
+                <option>Tatlı</option><option>Özel Tasarım</option><option>Diğer</option>
+              </select>
+              <input type="text" id="newCatInput" class="new-cat-input" placeholder="Yeni kategori adı">
+              <button type="button" class="btn btn-outline btn-sm" id="newCatBtn" onclick="toggleNewCategory()">+ Yeni</button>
+            </div>
           </div>
           <div><label>Fiyat (₺)</label><input type="number" id="prodPrice" step="0.01" min="0"></div>
           <div><label>Açıklama</label><textarea id="prodDesc" rows="2"></textarea></div>
           <div><label>Ürün Fotoğrafı</label><input type="file" id="prodImage" accept="image/*"></div>
-          <div class="flex-center">
-            <input type="checkbox" id="prodFeatured">
-            <label for="prodFeatured" style="margin:0">Öne Çıkan Ürün</label>
+          <div class="toggle-row">
+            <label class="toggle-switch">
+              <input type="checkbox" id="prodFeatured">
+              <span class="toggle-slider"></span>
+            </label>
+            <label for="prodFeatured" style="cursor:pointer">⭐ Öne Çıkan Ürün</label>
           </div>
           <div class="flex-center">
             <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa-save"></i> Kaydet</button>

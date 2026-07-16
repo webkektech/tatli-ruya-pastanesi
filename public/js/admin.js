@@ -93,9 +93,10 @@ function renderProductsTable(products) {
     </tr>`).join('');
 }
 function showAddProduct() {
-  ['productId','prodName','prodPrice','prodDesc','prodImage'].forEach(id => document.getElementById(id).value = '');
+  ['productId','prodName','prodPrice','prodDesc','prodImage','newCatInput'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
   document.getElementById('prodCategory').value = 'Pasta';
   document.getElementById('prodFeatured').checked = false;
+  document.getElementById('newCatInput').classList.add('new-cat-input');
   document.getElementById('productFormTitle').textContent = 'Yeni Ürün Ekle';
   document.getElementById('productFormCard').style.display = 'block';
   document.getElementById('productFormCard').scrollIntoView({ behavior: 'smooth' });
@@ -115,12 +116,44 @@ async function editProduct(id) {
     document.getElementById('productFormCard').scrollIntoView({ behavior: 'smooth' });
   } catch (e) { showToast('Ürün yüklenirken hata oluştu.', 'error'); }
 }
+// Yeni kategori ekleme
+function toggleNewCategory() {
+  const input = document.getElementById('newCatInput');
+  const select = document.getElementById('prodCategory');
+  const btn = document.getElementById('newCatBtn');
+  const isVisible = !input.classList.contains('new-cat-input');
+  if (isVisible) {
+    input.classList.add('new-cat-input');
+    btn.textContent = '+ Yeni';
+    input.value = '';
+  } else {
+    input.classList.remove('new-cat-input');
+    input.focus();
+    btn.textContent = 'İptal';
+  }
+}
+
 async function handleProductSubmit(e) {
   e.preventDefault();
   const id = document.getElementById('productId').value;
   const formData = new FormData();
   formData.append('name', document.getElementById('prodName').value);
-  formData.append('category', document.getElementById('prodCategory').value);
+  // Yeni kategori yazıldıysa onu kullan
+  const newCat = document.getElementById('newCatInput').value.trim();
+  formData.append('category', newCat || document.getElementById('prodCategory').value);
+  // Yeni kategoriyi select'e ekle
+  if (newCat) {
+    const select = document.getElementById('prodCategory');
+    let exists = false;
+    for (const opt of select.options) { if (opt.value === newCat) { exists = true; break; } }
+    if (!exists) {
+      const option = document.createElement('option');
+      option.value = newCat;
+      option.textContent = newCat;
+      select.appendChild(option);
+      select.value = newCat;
+    }
+  }
   formData.append('price', document.getElementById('prodPrice').value);
   formData.append('description', document.getElementById('prodDesc').value);
   formData.append('featured', document.getElementById('prodFeatured').checked);
