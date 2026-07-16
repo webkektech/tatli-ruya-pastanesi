@@ -169,20 +169,36 @@ button { cursor: pointer; font-family: inherit; border: none; outline: none; }
 .nav-toggle {
   display: none;
   flex-direction: column;
-  gap: 5px;
-  background: none;
-  padding: 4px;
+  gap: 6px;
+  background: var(--pink-100);
+  border: 2px solid var(--pink-300);
+  border-radius: 10px;
+  padding: 10px 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.nav-toggle:hover {
+  background: var(--pink-200);
+  border-color: var(--pink-400);
 }
 .nav-toggle span {
-  width: 28px;
-  height: 2.5px;
-  background: var(--dark);
-  border-radius: 2px;
-  transition: var(--transition);
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: linear-gradient(135deg, var(--pink-500), var(--pink-700));
+  border-radius: 3px;
+  transition: all 0.35s ease;
 }
-.nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
-.nav-toggle.active span:nth-child(2) { opacity: 0; }
-.nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+.nav-toggle.active {
+  background: var(--pink-500);
+  border-color: var(--pink-600);
+}
+.nav-toggle.active span {
+  background: white;
+}
+.nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(6px,6px); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
 
 /* ============================================
    HERO SECTION

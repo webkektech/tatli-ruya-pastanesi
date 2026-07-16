@@ -262,24 +262,24 @@ function setupMobileNav() {
   const links = document.getElementById('navLinks');
   const overlay = document.getElementById('navOverlay');
 
-  toggle.addEventListener('click', () => {
-    toggle.classList.toggle('active');
-    links.classList.toggle('active');
-    overlay.classList.toggle('active');
-  });
-
-  overlay.addEventListener('click', () => {
+  function closeMenu() {
     toggle.classList.remove('active');
     links.classList.remove('active');
     overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  toggle.addEventListener('click', () => {
+    const isOpen = toggle.classList.toggle('active');
+    links.classList.toggle('active');
+    overlay.classList.toggle('active');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
   });
 
+  overlay.addEventListener('click', closeMenu);
+
   links.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      toggle.classList.remove('active');
-      links.classList.remove('active');
-      overlay.classList.remove('active');
-    });
+    a.addEventListener('click', closeMenu);
   });
 }
 
