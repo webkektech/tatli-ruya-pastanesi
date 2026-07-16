@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dijital Menü - Tatlı Rüya Pastanesi</title>
+  <meta name="description" content="Tatlı Rüya Pastanesi - Dijital Menü">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍰</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+</head>
+<body class="qr-menu-container">
+
+  <div class="qr-menu-header">
+    <h1 style="font-family:'Playfair Display',serif;font-size:2rem;margin-bottom:8px">
+      🍰 <span style="color:var(--pink-600)">Tatlı Rüya</span> <span style="color:var(--gold)">Pastanesi</span>
+    </h1>
+    <p style="color:var(--gray);margin-bottom:16px">Dijital Menü – QR Kodu Tara, Sipariş Ver</p>
+    <div class="qr-code" id="qrCode"></div>
+    <p style="color:var(--gray-light);font-size:0.8rem;margin-top:8px">
+      Bu QR kodu dükkanınızın camına, masalara veya paketlere yapıştırabilirsiniz.
+    </p>
+  </div>
+
+  <div class="qr-menu-products" id="menuProducts"></div>
+
+  <div style="text-align:center;padding:20px">
+    <a href="/" style="color:var(--pink-500);font-weight:500"><i class="fa-solid fa-arrow-left"></i> Ana Siteye Dön</a>
+  </div>
+
+  <script>
+    // Generate QR code
+    const qrDiv = document.getElementById('qrCode');
+    if (qrDiv && typeof QRCode !== 'undefined') {
+      new QRCode(qrDiv, {
+        text: window.location.origin + '/menu.html',
+        width: 160,
+        height: 160,
+        colorDark: '#2d1f1a',
+        colorLight: '#ffffff'
+      });
+    }
+
+    // Load products and settings
+    async function loadMenu() {
+      try {
+        const [productsRes, settingsRes] = await Promise.all([
+          fetch('/api/products'),
+          fetch('/api/settings')
+        ]);
+        const products = await productsRes.json();
+        const settings = await settingsRes.json();
+        renderMenuProducts(products, settings);
+      } catch (e) {
+        console.error('Menü yüklenemedi:', e);
+        document.getElementById('menuProducts').innerHTML = '<p style="text-align:center;color:var(--gray)">Ürünler yüklenemedi.</p>';
+      }
+    }
+
+    function renderMenuProducts(products, settings) {
+      const container = document.getElementById('menuProducts');
+      if (products.length === 0) {
+        container.innerHTML = '<p style="text-align:center;color:var(--gray);padding:40px">Henüz ürün eklenmemiş.</p>';
+        return;
+      }
+
+      // Group by category
+      const grouped = {};
+      products.forEach(p => {
+        if (!grouped[p.category]) grouped[p.category] = [];
+        grouped[p.category].push(p);
+      });
+
+      let html = '';
+      for (const [cat, items] of Object.entries(grouped)) {
+        html += `<h3 style="font-family:'Playfair Display',serif;margin:24px 0 12px;color:var(--pink-600);font-size:1.3rem">${cat}</h3>`;
+        items.forEach(p => {
+          html += `
+            <div class="qr-menu-item">
+              <img src="${p.image || 'https://placehold.co/80/fdf2f7/db2777?text=🍰'}" alt="${p.name}" 
+                   onerror="this.src='https://placehold.co/80/fdf2f7/db2777?text=🍰'">
+              <div class="item-info">
+                <h4>${p.name}</h4>
+                <p style="font-size:0.8rem;color:var(--gray)">${p.description || ''}</p>
+              </div>
+              <div style="text-align:right;flex-shrink:0">
+                <div class="item-price">${p.price.toLocaleString('tr-TR')} ₺</div>
+                <a href="https://wa.me/${settings.whatsapp || '905XXXXXXXXX'}?text=Merhaba,%20${encodeURIComponent(p.name)}%20sipari%C5%9Fi%20vermek%20istiyorum.%20Fiyat%C4%B1:%20${p.price}%E2%82%BA"
+                   target="_blank" style="display:inline-block;margin-top:6px;color:#25D366;font-weight:600;font-size:0.82rem">
+                  <i class="fa-brands fa-whatsapp"></i> Sipariş Ver
+                </a>
+              </div>
+            </div>
+          `;
+        });
+      }
+      container.innerHTML = html;
+    }
+
+    loadMenu();
+  </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+{
+  "steps": [
+    {
+      "id": 1,
+      "title": "Kek Seçimi",
+      "icon": "🍞",
+      "options": [
+        {
+          "id": 1,
+          "label": "Çikolatalı",
+          "icon": "🍫",
+          "price": 200
+        },
+        {
+          "id": 2,
+          "label": "Vanilyalı",
+          "icon": "🍦",
+          "price": 180
+        },
+        {
+          "id": 3,
+          "label": "Havuçlu",
+          "icon": "🥕",
+          "price": 220
+        },
+        {
+          "id": 4,
+          "label": "Kırmızı Kadife",
+          "icon": "❤️",
+          "price": 250
+        },
+        {
+          "id": 5,
+          "label": "Muzlu",
+          "icon": "🍌",
+          "price": 210
+        },
+        {
+          "id": 6,
+          "label": "Limonlu",
+          "icon": "🍋",
+          "price": 190
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Krema Seçimi",
+      "icon": "🧁",
+      "options": [
+        {
+          "id": 1,
+          "label": "Çikolatalı Krem",
+          "icon": "🍫",
+          "price": 80
+        },
+        {
+          "id": 2,
+          "label": "Krem Şanti",
+          "icon": "☁️",
+          "price": 50
+        },
+        {
+          "id": 3,
+          "label": "Meyveli Krem",
+          "icon": "🍓",
+          "price": 90
+        },
+        {
+          "id": 4,
+          "label": "Karamelli Krem",
+          "icon": "🍯",
+          "price": 85
+        },
+        {
+          "id": 5,
+          "label": "Fıstık Kreması",
+          "icon": "🥜",
+          "price": 100
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Süsleme",
+      "icon": "✨",
+      "options": [
+        {
+          "id": 1,
+          "label": "Meyveli",
+          "icon": "🍓🍇",
+          "price": 70
+        },
+        {
+          "id": 2,
+          "label": "Çikolata Kaplı",
+          "icon": "🍫",
+          "price": 100
+        },
+        {
+          "id": 3,
+          "label": "Doğum Günü Yazılı",
+          "icon": "🎂",
+          "price": 60
+        },
+        {
+          "id": 4,
+          "label": "Çiçekli Tasarım",
+          "icon": "🌸",
+          "price": 120
+        },
+        {
+          "id": 5,
+          "label": "Makaronlu",
+          "icon": "🍬",
+          "price": 140
+        },
+        {
+          "id": 6,
+          "label": "Altın Varaklı",
+          "icon": "✨",
+          "price": 180
+        }
+      ]
+    }
+  ]
+}

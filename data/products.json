@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "name": "Çikolatalı Yaş Pasta",
+    "category": "Pasta",
+    "price": 350,
+    "description": "Belçika çikolatasıyla hazırlanan, üç katlı nefis yaş pasta. Özel günlerin vazgeçilmezi.",
+    "image": "https://images.pexels.com/photos/2878737/pexels-photo-2878737.jpeg?w=600",
+    "featured": true,
+    "createdAt": "2026-01-15T10:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "name": "Frambuazlı Cheesecake",
+    "category": "Pasta",
+    "price": 280,
+    "description": "Taze frambuazlarla süslenmiş, kremamsı dokusuyla damak çatlatan cheesecake.",
+    "image": "https://images.pexels.com/photos/16223357/pexels-photo-16223357.jpeg?w=600",
+    "featured": true,
+    "createdAt": "2026-01-16T10:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "name": "Su Böreği",
+    "category": "Börek",
+    "price": 200,
+    "description": "El açması, incecik yufkalı, tereyağlı nefis su böreği. Sipariş üzerine taze hazırlanır.",
+    "image": "https://images.pexels.com/photos/30674035/pexels-photo-30674035.jpeg?w=600",
+    "featured": false,
+    "createdAt": "2026-01-17T10:00:00.000Z"
+  },
+  {
+    "id": 4,
+    "name": "Doğum Günü Pastası",
+    "category": "Özel Tasarım",
+    "price": 500,
+    "description": "Tamamen size özel tasarlanır. İsim, yaş ve dilediğiniz tema ile kişiselleştirilir.",
+    "image": "https://images.pexels.com/photos/17247953/pexels-photo-17247953.jpeg?w=600",
+    "featured": true,
+    "createdAt": "2026-01-18T10:00:00.000Z"
+  },
+  {
+    "id": 5,
+    "name": "Elmalı Kurabiye",
+    "category": "Kurabiye",
+    "price": 150,
+    "description": "Tarçınlı elma dolgulu, ağızda dağılan elmalı kurabiye. Çay saatlerinin favorisi.",
+    "image": "https://images.pexels.com/photos/35640237/pexels-photo-35640237.jpeg?w=600",
+    "featured": false,
+    "createdAt": "2026-01-19T10:00:00.000Z"
+  },
+  {
+    "id": 6,
+    "name": "Tiramisu",
+    "category": "Tatlı",
+    "price": 220,
+    "description": "İtalyan usulü mascarpone peynirli, kahveli nefis tiramisu. Gerçek İtalyan lezzeti.",
+    "image": "https://images.pexels.com/photos/34801388/pexels-photo-34801388.jpeg?w=600",
+    "featured": false,
+    "createdAt": "2026-01-20T10:00:00.000Z"
+  },
+  {
+    "id": 7,
+    "name": "Makaron Kutusu",
+    "category": "Kurabiye",
+    "price": 180,
+    "description": "Rengarenk, 12'li özel makaron kutusu. Fransız usulü, badem unlu nefis tatlar.",
+    "image": "https://images.pexels.com/photos/17988072/pexels-photo-17988072.jpeg?w=600",
+    "featured": false,
+    "createdAt": "2026-01-21T10:00:00.000Z"
+  },
+  {
+    "id": 8,
+    "name": "San Sebastian Cheesecake",
+    "category": "Pasta",
+    "price": 320,
+    "description": "Yanık yüzeyi ve kremsi içiyle meşhur Bask cheesecake. Karşı konulmaz bir lezzet.",
+    "image": "https://images.pexels.com/photos/25746358/pexels-photo-25746358.jpeg?w=600",
+    "featured": false,
+    "createdAt": "2026-01-22T10:00:00.000Z"
+  },
+  {
+    "id": 9,
+    "name": "Çikolatalı Kruvasan",
+    "category": "Börek",
+    "price": 85,
+    "description": "Tereyağlı, kat kat hamurlu, bol çikolata dolgulu Fransız kruvasan. Kahvaltıların yıldızı.",
+    "image": "https://images.pexels.com/photos/4828331/pexels-photo-4828331.jpeg?w=600",
+    "featured": false,
+    "createdAt": "2026-02-01T10:00:00.000Z"
+  },
+  {
+    "id": 10,
+    "name": "Brownie",
+    "category": "Tatlı",
+    "price": 120,
+    "description": "Yoğun çikolata lezzeti, dışı çıtır içi yumuşak nefis brownie. Vanilyalı dondurma ile servis edilir.",
+    "image": "https://images.pexels.com/photos/14576527/pexels-photo-14576527.jpeg?w=600",
+    "featured": false,
+    "createdAt": "2026-02-03T10:00:00.000Z"
+  },
+  {
+    "id": 11,
+    "name": "Profiterol",
+    "category": "Tatlı",
+    "price": 190,
+    "description": "Çıtır hamur topları, içi krem şanti, üzeri bol çikolata soslu. Vazgeçilmez klasik.",
+    "image": "https://images.pexels.com/photos/36555127/pexels-photo-36555127.jpeg?w=600",
+    "featured": false,
+    "createdAt": "2026-02-05T10:00:00.000Z"
+  },
+  {
+    "id": 12,
+    "name": "Limonlu Tart",
+    "category": "Tatlı",
+    "price": 160,
+    "description": "İncecik hamur üzerinde limonlu krema, üstü İtalyan mereng. Ferahlatıcı lezzet.",
+    "image": "https://images.pexels.com/photos/34712614/pexels-photo-34712614.jpeg?w=600",
+    "featured": false,
+    "createdAt": "2026-02-07T10:00:00.000Z"
+  },
+  {
+    "id": 13,
+    "name": "Cupcake Seti",
+    "category": "Kurabiye",
+    "price": 240,
+    "description": "6'lı özel cupcake seti. Çikolatalı, vanilyalı ve frambuazlı seçenekleriyle renkli sunum.",
+    "image": "https://images.pexels.com/photos/14105/pexels-photo-14105.jpeg?w=600",
+    "featured": false,
+    "createdAt": "2026-02-10T10:00:00.000Z"
+  },
+  {
+    "id": 14,
+    "name": "Düğün Pastası",
+    "category": "Özel Tasarım",
+    "price": 2500,
+    "description": "3 katlı, tamamen el işçiliği. Düğün temanıza özel tasarlanır. Ücretsiz tadım ve danışmanlık.",
+    "image": "https://images.pexels.com/photos/28259729/pexels-photo-28259729.jpeg?w=600",
+    "featured": false,
+    "createdAt": "2026-02-12T10:00:00.000Z"
+  },
+  {
+    "id": 15,
+    "name": "Patatesli Poğaça",
+    "category": "Börek",
+    "price": 60,
+    "description": "Yumuşacık hamuru ve bol patatesli iç harcıyla kahvaltı klasiği. Her gün taze çıkar.",
+    "image": "https://images.pexels.com/photos/33788288/pexels-photo-33788288.jpeg?w=600",
+    "featured": false,
+    "createdAt": "2026-02-15T10:00:00.000Z"
+  },
+  {
+    "id": 16,
+    "name": "Kadayıflı Pasta",
+    "category": "Pasta",
+    "price": 380,
+    "description": "Altında çıtır kadayıf, üzerinde krem şanti ve Antep fıstığı. Türk mutfağının modern yorumu.",
+    "image": "https://images.pexels.com/photos/30484154/pexels-photo-30484154.jpeg?w=600",
+    "featured": false,
+    "createdAt": "2026-02-18T10:00:00.000Z"
+  }
+]

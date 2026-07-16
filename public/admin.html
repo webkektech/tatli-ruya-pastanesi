@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Tatlı Rüya Pastanesi</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍰</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-page">
+
+  <aside class="admin-sidebar" id="sidebar">
+    <div class="admin-logo">🍰 Tatlı <span>Rüya</span></div>
+    <nav>
+      <a href="#" class="active" data-section="dashboard"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+      <a href="#" data-section="products"><i class="fa-solid fa-cake-candles"></i> Ürünler</a>
+      <a href="#" data-section="blog"><i class="fa-solid fa-pen-to-square"></i> Blog</a>
+      <a href="#" data-section="designer"><i class="fa-solid fa-palette"></i> Pastanı Tasarla</a>
+      <a href="#" data-section="settings"><i class="fa-solid fa-gear"></i> Ayarlar</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="/" class="flex-center" style="color:#aaa;font-size:0.85rem">
+        <i class="fa-solid fa-arrow-left"></i> Siteye Dön
+      </a>
+      <a href="#" id="logoutBtn" class="flex-center" style="color:#ef4444;font-size:0.85rem;margin-top:8px">
+        <i class="fa-solid fa-right-from-bracket"></i> Çıkış Yap
+      </a>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+
+    <!-- Dashboard -->
+    <section class="admin-section active" id="section-dashboard">
+      <h2>📊 Dashboard</h2>
+      <div class="stats-cards" id="statsCards">
+        <div class="stat-card"><div class="stat-num">-</div><div class="stat-label">Toplam Ürün</div></div>
+        <div class="stat-card"><div class="stat-num">-</div><div class="stat-label">Blog Yazısı</div></div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="admin-section" id="section-products">
+      <div class="flex-between mb-24 flex-wrap">
+        <h2>🍰 Ürün Yönetimi</h2>
+        <button class="btn btn-primary btn-sm" onclick="showAddProduct()"><i class="fa-solid fa-plus"></i> Yeni Ürün Ekle</button>
+      </div>
+      <div class="admin-card" id="productFormCard" style="display:none">
+        <h4 id="productFormTitle">Yeni Ürün Ekle</h4>
+        <form id="productForm" class="admin-form">
+          <input type="hidden" id="productId" value="">
+          <div><label>Ürün Adı *</label><input type="text" id="prodName" required></div>
+          <div><label>Kategori</label>
+            <select id="prodCategory">
+              <option>Pasta</option><option>Börek</option><option>Kurabiye</option>
+              <option>Tatlı</option><option>Özel Tasarım</option><option>Diğer</option>
+            </select>
+          </div>
+          <div><label>Fiyat (₺)</label><input type="number" id="prodPrice" step="0.01" min="0"></div>
+          <div><label>Açıklama</label><textarea id="prodDesc" rows="2"></textarea></div>
+          <div><label>Ürün Fotoğrafı</label><input type="file" id="prodImage" accept="image/*"></div>
+          <div class="flex-center">
+            <input type="checkbox" id="prodFeatured">
+            <label for="prodFeatured" style="margin:0">Öne Çıkan Ürün</label>
+          </div>
+          <div class="flex-center">
+            <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa-save"></i> Kaydet</button>
+            <button type="button" class="btn btn-outline btn-sm" onclick="hideProductForm()">İptal</button>
+          </div>
+        </form>
+      </div>
+      <div class="admin-card">
+        <h4>Ürün Listesi</h4>
+        <div style="overflow-x:auto">
+          <table class="admin-table" id="productsTable">
+            <thead><tr><th>Foto</th><th>Ad</th><th>Kategori</th><th>Fiyat</th><th>Öne Çıkan</th><th>İşlem</th></tr></thead>
+            <tbody id="productsTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="admin-section" id="section-blog">
+      <div class="flex-between mb-24 flex-wrap">
+        <h2>📝 Blog Yönetimi</h2>
+        <button class="btn btn-primary btn-sm" onclick="showAddBlog()"><i class="fa-solid fa-plus"></i> Yeni Yazı Ekle</button>
+      </div>
+      <div class="admin-card" id="blogFormCard" style="display:none">
+        <h4 id="blogFormTitle">Yeni Blog Yazısı</h4>
+        <form id="blogForm" class="admin-form">
+          <input type="hidden" id="blogId" value="">
+          <div><label>Başlık *</label><input type="text" id="blogTitle" required></div>
+          <div><label>Özet</label><textarea id="blogSummary" rows="2"></textarea></div>
+          <div><label>İçerik (Düz metin yazın, satır başları paragraf olur)</label><textarea id="blogContent" rows="8" placeholder="Buraya yazınızı yazın. Satır başları otomatik paragraf olacak. HTML etiketi kullanmanıza gerek yok."></textarea></div>
+          <div><label>Kapak Fotoğrafı</label><input type="file" id="blogImage" accept="image/*"></div>
+          <div class="flex-center">
+            <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa-save"></i> Kaydet</button>
+            <button type="button" class="btn btn-outline btn-sm" onclick="hideBlogForm()">İptal</button>
+          </div>
+        </form>
+      </div>
+      <div class="admin-card">
+        <h4>Blog Yazıları</h4>
+        <table class="admin-table" id="blogTable">
+          <thead><tr><th>Foto</th><th>Başlık</th><th>Tarih</th><th>İşlem</th></tr></thead>
+          <tbody id="blogTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Designer Section (Visual Editor) -->
+    <section class="admin-section" id="section-designer">
+      <h2>🎨 Pastanı Tasarla – Seçenekleri Düzenle</h2>
+      <p style="color:var(--gray);margin-bottom:20px;font-size:0.9rem">Sitedeki pasta tasarlama adımlarını ve seçeneklerini buradan düzenleyebilirsiniz.</p>
+      <div id="designerStepsContainer"></div>
+      <button class="btn btn-primary" onclick="addDesignerStep()"><i class="fa-solid fa-plus"></i> Yeni Adım Ekle</button>
+      <button class="btn btn-gold" onclick="saveDesigner()" style="margin-top:20px;display:block"><i class="fa-solid fa-floppy-disk"></i> Tümünü Kaydet</button>
+    </section>
+
+    <!-- Settings Section -->
+    <section class="admin-section" id="section-settings">
+      <h2>⚙️ Site Ayarları</h2>
+      <div class="admin-card">
+        <h4>İletişim Bilgileri</h4>
+        <form id="settingsForm" class="admin-form">
+          <div><label>WhatsApp Numarası (905XXXXXXXXX)</label><input type="text" id="setWhatsapp" required></div>
+          <div><label>Instagram Kullanıcı Adı</label><input type="text" id="setInstagram"></div>
+          <div><label>Adres</label><input type="text" id="setAddress"></div>
+          <div><label>Google Haritalar Linki</label><input type="text" id="setGoogleMaps"></div>
+        </form>
+      </div>
+      <div class="admin-card">
+        <h4>Çalışma Saatleri</h4>
+        <div class="flex-center flex-wrap">
+          <div><label>Açılış</label><input type="time" id="setOpen" style="width:140px"></div>
+          <div><label>Kapanış</label><input type="time" id="setClose" style="width:140px"></div>
+        </div>
+      </div>
+      <div class="admin-card">
+        <h4>Hero & Hakkımızda</h4>
+        <div class="admin-form">
+          <div><label>Hero Başlık</label><input type="text" id="setHeroTitle"></div>
+          <div><label>Hero Alt Başlık</label><input type="text" id="setHeroSubtitle"></div>
+          <div><label>Hero Arka Plan Görsel URL</label><input type="text" id="setHeroBg"></div>
+          <div><label>Hakkımızda Yazısı</label><textarea id="setAboutText" rows="3"></textarea></div>
+        </div>
+      </div>
+      <div class="admin-card">
+        <h4>Özel Gün Banner</h4>
+        <div class="admin-form">
+          <div class="flex-center">
+            <input type="checkbox" id="setBannerActive">
+            <label for="setBannerActive" style="margin:0">Banner Aktif</label>
+          </div>
+          <div><label>Banner Başlık</label><input type="text" id="setBannerTitle"></div>
+          <div><label>Banner Mesaj</label><input type="text" id="setBannerMessage"></div>
+        </div>
+      </div>
+      <button class="btn btn-gold" onclick="saveSettings()"><i class="fa-solid fa-floppy-disk"></i> Tüm Ayarları Kaydet</button>
+    </section>
+
+  </main>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

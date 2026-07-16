@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tatlı Rüya Pastanesi</title>
+  <meta name="description" content="Tatlı Rüya Pastanesi - El yapımı pasta, börek ve tatlı çeşitleri. WhatsApp'tan hemen sipariş verin!">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍰</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-cake">🍰</div>
+  </div>
+
+  <!-- Mobile overlay -->
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <span class="icon">🍰</span>
+        <span>Tatlı Rüya</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Ana Sayfa</a></li>
+        <li><a href="#products">Ürünler</a></li>
+        <li><a href="#designer">Pastanı Tasarla</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">İletişim</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-badge" id="heroBadge">✨ El Yapımı Lezzetler</span>
+      <h1 id="heroTitle">Tatlı Rüya <span class="accent">Pastanesi</span></h1>
+      <p id="heroSubtitle">2010 yılından beri el emeğiyle hazırladığımız pasta, börek ve tatlı çeşitlerimizle sizleri ağırlıyoruz.</p>
+      <div class="hero-buttons">
+        <a href="#products" class="btn btn-primary"><i class="fa-solid fa-cake-candles"></i> Ürünleri Keşfet</a>
+        <a href="#" id="heroWhatsapp" class="btn btn-outline"><i class="fa-brands fa-whatsapp"></i> WhatsApp Sipariş</a>
+      </div>
+      <div style="margin-top: 30px;" id="heroStatus"></div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="section" id="products">
+    <div class="section-header reveal">
+      <span class="badge">Menümüz</span>
+      <h2>Lezzetli <span class="gold">Ürünlerimiz</span></h2>
+      <span class="underline"></span>
+      <p>Taptaze malzemelerle, günlük olarak hazırladığımız birbirinden özel lezzetler.</p>
+    </div>
+    <div class="category-filters reveal" id="categoryFilters"></div>
+    <div class="products-grid" id="productsGrid"></div>
+  </section>
+
+  <!-- Cake Designer Section -->
+  <section class="section designer-section" id="designer">
+    <div class="section-header reveal">
+      <span class="badge">Eğlence</span>
+      <h2>Pastanı <span class="gold">Tasarla</span></h2>
+      <span class="underline"></span>
+      <p>3 adımda hayalindeki pastayı oluştur, fiyatını gör, WhatsApp'tan sipariş et!</p>
+    </div>
+    <div class="designer-box reveal" id="designerBox">
+      <!-- Filled by designer.js -->
+    </div>
+  </section>
+
+  <!-- Reservation Section -->
+  <section class="reservation-section reveal" id="reservation">
+    <div class="reservation-inner">
+      <div class="reservation-text">
+        <h2>🎂 Özel Gününüz İçin <span class="gold">Rezervasyon</span></h2>
+        <p>Doğum günü, nişan, düğün veya herhangi bir özel gün için pasta siparişi vermek ister misiniz? Tarih seçin, WhatsApp'tan detayları konuşalım.</p>
+      </div>
+      <div class="reservation-form">
+        <input type="date" id="reservationDate" min="">
+        <button class="btn btn-gold" onclick="handleReservation()" style="width:100%">
+          <i class="fa-brands fa-whatsapp"></i> WhatsApp'ta Sorgula
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section class="section blog-section" id="blog">
+    <div class="section-header reveal">
+      <span class="badge">Blog</span>
+      <h2>Lezzet <span class="gold">Yazıları</span></h2>
+      <span class="underline"></span>
+      <p>Pastalar, tatlılar ve mutfak üzerine keyifli yazılar.</p>
+    </div>
+    <div class="blog-grid" id="blogGrid"></div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="map-section reveal" id="location">
+    <div class="section-header reveal">
+      <span class="badge">Konum</span>
+      <h2>Bize <span class="gold">Ulaşın</span></h2>
+      <span class="underline"></span>
+    </div>
+    <div class="map-container">
+      <div class="map-placeholder">
+        <span class="icon">📍</span>
+        <p id="mapAddress">Örnek Mah. Lezzet Sok. No:1, İstanbul</p>
+        <a href="#" id="mapLink" target="_blank" class="btn btn-gold"><i class="fa-solid fa-map-location-dot"></i> Yol Tarifi Al</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="contact-section" id="contact">
+    <div class="contact-grid">
+      <div class="contact-col">
+        <h3>🍰 Tatlı Rüya Pastanesi</h3>
+        <p>2010 yılından beri el emeğiyle hazırladığımız pasta, börek ve tatlı çeşitlerimizle sizleri ağırlıyoruz.</p>
+        <div class="contact-social">
+          <a href="#" id="footerInstagram" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" id="footerWhatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="contact-col">
+        <h3>Hızlı Linkler</h3>
+        <a href="#products">Ürünler</a>
+        <a href="#designer">Pastanı Tasarla</a>
+        <a href="#blog">Blog</a>
+        <a href="/menu.html">QR Dijital Menü</a>
+      </div>
+      <div class="contact-col">
+        <h3>Çalışma Saatleri</h3>
+        <p id="workingHoursDisplay">Pazartesi - Pazar: 08:00 - 20:00</p>
+        <div id="footerStatus"></div>
+      </div>
+      <div class="contact-col">
+        <h3>İletişim</h3>
+        <p id="footerAddress">📍 Örnek Mah. Lezzet Sok. No:1, İstanbul</p>
+        <a href="#" id="footerPhone"><i class="fa-solid fa-phone"></i> WhatsApp: +90 5XX XXX XX XX</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Tatlı Rüya Pastanesi. Tüm hakları saklıdır. ❤️ ile yapıldı.</p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="#" class="floating-whatsapp" id="floatingWhatsapp" target="_blank" title="WhatsApp'tan Sipariş Ver">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- Blog Modal -->
+  <div class="blog-modal-overlay" id="blogModalOverlay">
+    <div class="blog-modal" id="blogModal">
+      <button class="close-modal" id="closeBlogModal">&times;</button>
+      <img id="blogModalImg" src="" alt="">
+      <h2 id="blogModalTitle"></h2>
+      <p class="modal-date" id="blogModalDate"></p>
+      <div class="modal-content" id="blogModalContent"></div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/designer.js"></script>
+</body>
+</html>

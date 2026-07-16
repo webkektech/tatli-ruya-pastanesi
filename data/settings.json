@@ -1,0 +1,19 @@
+{
+  "whatsapp": "905XXXXXXXXX",
+  "instagram": "tatli.ruya.pastanesi",
+  "address": "Örnek Mah. Lezzet Sok. No:1, İstanbul",
+  "googleMaps": "https://maps.google.com/?q=İstanbul",
+  "workingHours": {
+    "open": "08:00",
+    "close": "20:00"
+  },
+  "specialDayBanner": {
+    "active": true,
+    "title": "",
+    "message": ""
+  },
+  "heroTitle": "Tatlı Rüya Pastanesi",
+  "heroSubtitle": "El yapımı, taptaze lezzetler",
+  "aboutText": "2010 yılından beri el emeğiyle hazırladığımız pasta, börek ve tatlı çeşitlerimizle sizleri ağırlıyoruz. Her ürünümüz günlük taze malzemelerle, hijyenik koşullarda üretilir.",
+  "heroBgImage": "https://images.unsplash.com/photo-1557925923-cd4648e211a0?w=1920"
+}
