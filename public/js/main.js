@@ -139,13 +139,26 @@ function renderCategories(products) {
   });
 }
 
+let showingAll = false;
+
 function renderProducts(list) {
   const grid = document.getElementById('productsGrid');
   if (list.length === 0) {
     grid.innerHTML = '<p style="text-align:center;color:var(--gray);grid-column:1/-1">Bu kategoride henüz ürün yok.</p>';
+    document.getElementById('showMoreRow')?.remove();
     return;
   }
-  grid.innerHTML = list.map(p => `
+
+  showingAll = false;
+  renderProductCards(list);
+}
+
+function renderProductCards(list) {
+  const grid = document.getElementById('productsGrid');
+  const showAll = showingAll || list.length <= 8;
+  const displayList = showAll ? list : list.slice(0, 8);
+
+  grid.innerHTML = displayList.map(p => `
     <div class="product-card reveal">
       <div class="img-wrapper">
         <img src="${p.image || 'https://placehold.co/400x400/fdf2f7/db2777?text=🍰'}" alt="${p.name}" loading="lazy"
@@ -171,8 +184,37 @@ function renderProducts(list) {
       </div>
     </div>
   `).join('');
+
+  // "Tümünü Gör" butonu
+  let showMore = document.getElementById('showMoreRow');
+  if (list.length > 8) {
+    if (!showMore) {
+      showMore = document.createElement('div');
+      showMore.id = 'showMoreRow';
+      showMore.className = 'show-more-row';
+      grid.parentNode.insertBefore(showMore, grid.nextSibling);
+    }
+    showMore.innerHTML = `
+      <button class="show-more-btn" onclick="toggleShowAll()">
+        <i class="fa-solid ${showAll ? 'fa-chevron-up' : 'fa-chevron-down'}"></i>
+        ${showAll ? 'Gizle' : `Tümünü Gör (${list.length})`}
+      </button>
+    `;
+  } else {
+    showMore?.remove();
+  }
+
   setTimeout(revealOnScroll, 200);
 }
+
+window.toggleShowAll = function() {
+  showingAll = !showingAll;
+  renderProductCards(products.filter(p => {
+    const activeCat = document.querySelector('.category-btn.active');
+    const cat = activeCat ? activeCat.dataset.cat : 'all';
+    return cat === 'all' || p.category === cat;
+  }));
+};
 
 // Load blog
 async function loadBlog() {

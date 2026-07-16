@@ -1237,6 +1237,33 @@ button { cursor: pointer; font-family: inherit; border: none; outline: none; }
 .category-row .btn-sm { white-space: nowrap; flex-shrink: 0; }
 .new-cat-input { display: none; }
 
+/* Show More Button */
+.show-more-row {
+  text-align: center;
+  margin-top: 24px;
+}
+.show-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: var(--transition);
+  background: white;
+  color: var(--pink-600);
+  border: 2px solid var(--pink-300);
+  box-shadow: var(--shadow-sm);
+}
+.show-more-btn:hover {
+  background: var(--pink-50);
+  border-color: var(--pink-500);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
 /* Stats Cards */
 .stats-cards {
   display: grid;
