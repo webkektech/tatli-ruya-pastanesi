@@ -614,9 +614,9 @@ button { cursor: pointer; font-family: inherit; border: none; outline: none; }
 .reservation-section {
   background: linear-gradient(135deg, var(--pink-50), var(--cream-dark));
   border-radius: var(--radius-xl);
-  padding: 60px 40px;
+  padding: 70px 50px;
   max-width: 1300px;
-  margin: 0 auto 60px;
+  margin: 80px auto 60px;
 }
 .reservation-inner {
   display: flex;

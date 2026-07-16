@@ -164,10 +164,16 @@ function renderProducts(list) {
         <div class="price">${p.price.toLocaleString('tr-TR')} ₺</div>
         <p class="desc">${p.description || ''}</p>
         <div class="card-btns">
-          <a href="https://wa.me/${settings.whatsapp || '905XXXXXXXXX'}?text=Merhaba,%20${encodeURIComponent(p.name)}%20%C3%BCr%C3%BCn%C3%BCnden%20sipari%C5%9F%20vermek%20istiyorum.%20Fiyat%C4%B1:%20${p.price}%E2%82%BA" 
-             target="_blank" class="btn btn-whatsapp btn-sm">
-            <i class="fa-brands fa-whatsapp"></i> Sipariş Ver
-          </a>
+          ${p.category === 'Özel Tasarım' ? `
+            <a href="#designer" class="btn btn-primary btn-sm">
+              <i class="fa-solid fa-palette"></i> Pastanı Tasarla
+            </a>
+          ` : `
+            <a href="https://wa.me/${settings.whatsapp || '905XXXXXXXXX'}?text=Merhaba,%20${encodeURIComponent(p.name)}%20%C3%BCr%C3%BCn%C3%BCnden%20sipari%C5%9F%20vermek%20istiyorum.%20Fiyat%C4%B1:%20${p.price}%E2%82%BA" 
+               target="_blank" class="btn btn-whatsapp btn-sm">
+              <i class="fa-brands fa-whatsapp"></i> Sipariş Ver
+            </a>
+          `}
         </div>
       </div>
     </div>
