@@ -37,6 +37,19 @@
       <div class="stats-cards" id="statsCards">
         <div class="stat-card"><div class="stat-num">-</div><div class="stat-label">Toplam Ürün</div></div>
         <div class="stat-card"><div class="stat-num">-</div><div class="stat-label">Blog Yazısı</div></div>
+        <div class="stat-card"><div class="stat-num">-</div><div class="stat-label">⭐ Öne Çıkan</div></div>
+        <div class="stat-card"><div class="stat-num">-</div><div class="stat-label">Kategori</div></div>
+      </div>
+      <div class="admin-card" id="recentProductsCard">
+        <h4>🆕 Son Eklenen Ürünler</h4>
+        <table class="admin-table" id="recentProductsTable">
+          <thead><tr><th>Foto</th><th>Ad</th><th>Kategori</th><th>Fiyat</th></tr></thead>
+          <tbody id="recentProductsBody"></tbody>
+        </table>
+      </div>
+      <div class="flex-center flex-wrap" style="margin-top:16px">
+        <button class="btn btn-primary btn-sm" onclick="document.querySelector('[data-section=products]').click()"><i class="fa-solid fa-plus"></i> Yeni Ürün Ekle</button>
+        <a href="/" target="_blank" class="btn btn-outline btn-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> Siteyi Görüntüle</a>
       </div>
     </section>
 
@@ -152,17 +165,6 @@
           <div><label>Hero Alt Başlık</label><input type="text" id="setHeroSubtitle"></div>
           <div><label>Hero Arka Plan Görsel URL</label><input type="text" id="setHeroBg"></div>
           <div><label>Hakkımızda Yazısı</label><textarea id="setAboutText" rows="3"></textarea></div>
-        </div>
-      </div>
-      <div class="admin-card">
-        <h4>Özel Gün Banner</h4>
-        <div class="admin-form">
-          <div class="flex-center">
-            <input type="checkbox" id="setBannerActive">
-            <label for="setBannerActive" style="margin:0">Banner Aktif</label>
-          </div>
-          <div><label>Banner Başlık</label><input type="text" id="setBannerTitle"></div>
-          <div><label>Banner Mesaj</label><input type="text" id="setBannerMessage"></div>
         </div>
       </div>
       <button class="btn btn-gold" onclick="saveSettings()"><i class="fa-solid fa-floppy-disk"></i> Tüm Ayarları Kaydet</button>

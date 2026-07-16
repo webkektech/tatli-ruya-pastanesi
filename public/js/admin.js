@@ -63,12 +63,27 @@ document.addEventListener('DOMContentLoaded', async () => {
 // ========= DASHBOARD =========
 async function loadDashboard() {
   try {
-    const res = await fetch('/api/products');
-    const p = await res.json();
-    const blogRes = await fetch('/api/blog');
-    const b = await blogRes.json();
+    const p = await (await fetch('/api/products')).json();
+    const b = await (await fetch('/api/blog')).json();
+    const featuredCount = p.filter(x => x.featured).length;
+    const categories = [...new Set(p.map(x => x.category))].length;
     const cards = document.querySelectorAll('#statsCards .stat-num');
-    if (cards.length >= 2) { cards[0].textContent = p.length; cards[1].textContent = b.length; }
+    if (cards.length >= 4) {
+      cards[0].textContent = p.length;
+      cards[1].textContent = b.length;
+      cards[2].textContent = featuredCount;
+      cards[3].textContent = categories;
+    }
+    // Son 3 ürün
+    const recent = [...p].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 3);
+    const tbody = document.getElementById('recentProductsBody');
+    if (tbody) {
+      tbody.innerHTML = recent.length === 0 ? '<tr><td colspan="4" style="text-align:center;color:var(--gray)">Henüz ürün eklenmemiş.</td></tr>'
+        : recent.map(r => `<tr>
+          <td><img src="${r.image || 'https://placehold.co/50/fdf2f7/db2777?text=🍰'}" alt="" onerror="this.src='https://placehold.co/50/fdf2f7/db2777?text=🍰'" style="width:40px;height:40px;object-fit:cover;border-radius:6px"></td>
+          <td>${r.name}</td><td>${r.category}</td><td>${r.price.toLocaleString('tr-TR')} ₺</td>
+        </tr>`).join('');
+    }
   } catch (e) { console.error(e); }
 }
 
@@ -328,11 +343,6 @@ async function loadSettings() {
     document.getElementById('setHeroSubtitle').value = s.heroSubtitle || '';
     document.getElementById('setHeroBg').value = s.heroBgImage || '';
     document.getElementById('setAboutText').value = s.aboutText || '';
-    if (s.specialDayBanner) {
-      document.getElementById('setBannerActive').checked = s.specialDayBanner.active || false;
-      document.getElementById('setBannerTitle').value = s.specialDayBanner.title || '';
-      document.getElementById('setBannerMessage').value = s.specialDayBanner.message || '';
-    }
   } catch (e) { console.error(e); }
 }
 async function saveSettings() {
@@ -345,8 +355,7 @@ async function saveSettings() {
     heroTitle: document.getElementById('setHeroTitle').value,
     heroSubtitle: document.getElementById('setHeroSubtitle').value,
     heroBgImage: document.getElementById('setHeroBg').value,
-    aboutText: document.getElementById('setAboutText').value,
-    specialDayBanner: { active: document.getElementById('setBannerActive').checked, title: document.getElementById('setBannerTitle').value, message: document.getElementById('setBannerMessage').value }
+    aboutText: document.getElementById('setAboutText').value
   };
   try {
     const res = await fetch('/api/settings', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(settings) });

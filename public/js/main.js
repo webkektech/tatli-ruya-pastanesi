@@ -86,13 +86,6 @@ function applySettings() {
   document.getElementById('workingHoursDisplay').textContent = `Pazartesi - Pazar: ${hours.open} - ${hours.close}`;
   updateOpenStatus(hours);
 
-  // Special day banner
-  if (settings.specialDayBanner && settings.specialDayBanner.active) {
-    document.getElementById('heroBadge').textContent = '🎉 ' + settings.specialDayBanner.title;
-    document.getElementById('heroBadge').style.background = '#fff3cd';
-    document.getElementById('heroBadge').style.borderColor = '#ffc107';
-    document.getElementById('heroBadge').style.color = '#856404';
-  }
 }
 
 function updateOpenStatus(hours) {
