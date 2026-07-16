@@ -164,7 +164,7 @@ function renderProducts(list) {
         <div class="price">${p.price.toLocaleString('tr-TR')} ₺</div>
         <p class="desc">${p.description || ''}</p>
         <div class="card-btns">
-          ${p.category === 'Özel Tasarım' ? `
+          ${p.name === 'Doğum Günü Pastası' ? `
             <a href="#designer" class="btn btn-primary btn-sm">
               <i class="fa-solid fa-palette"></i> Pastanı Tasarla
             </a>
