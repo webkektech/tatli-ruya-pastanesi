@@ -1325,8 +1325,45 @@ button { cursor: pointer; font-family: inherit; border: none; outline: none; }
   .admin-table { font-size: 0.82rem; }
 }
 
-/* Telefon 480px */
+/* Telefon 480px - Tam Mobil Uyum */
 @media (max-width: 480px) {
+  /* Taşma engelleme */
+  *, *::before, *::after { max-width: 100%; box-sizing: border-box; }
+  body { overflow-x: hidden; word-break: break-word; overflow-wrap: break-word; }
+
+  /* Tablo yatay kaydırma (taşma olmadan) */
+  .admin-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; }
+  .admin-table thead, .admin-table tbody, .admin-table tr, .admin-table th, .admin-table td { white-space: nowrap; }
+  .admin-card { overflow-x: auto; }
+
+  /* Form taşma engelleme */
+  .admin-form input, .admin-form textarea, .admin-form select { max-width: 100% !important; width: 100%; }
+  .admin-form { max-width: 100%; }
+  .step-header-inputs { flex-direction: column; }
+  .step-header-inputs input { width: 100% !important; }
+  .designer-option-row { flex-direction: column; align-items: flex-start; }
+  .designer-option-row input { width: 100% !important; }
+  .designer-step-card { padding: 14px; }
+
+  /* Toast mobil */
+  .toast { max-width: 90vw; min-width: auto; font-size: 0.8rem; padding: 12px 14px; }
+  .toast-container { right: 8px; top: 12px; }
+
+  /* Blog modal mobil */
+  .blog-modal-overlay { padding: 10px; align-items: flex-start; }
+  .blog-modal { max-width: 95vw; padding: 18px 14px; border-radius: var(--radius); }
+  .blog-modal img { max-height: 180px; object-fit: cover; }
+  .blog-modal h2 { font-size: 1.15rem; }
+
+  /* Status widget mobil */
+  .status-widget { font-size: 0.75rem; padding: 8px 14px; flex-wrap: wrap; text-align: center; }
+
+  /* Map mobil */
+  .map-placeholder .icon { font-size: 2.5rem; }
+
+  /* Reservation mobil */
+  .reservation-form input[type="date"] { font-size: 0.9rem; padding: 12px 14px; }
+
   .nav-logo { font-size: 1.15rem; }
   .nav-logo .icon { font-size: 1.4rem; }
   .nav-links { width: 85%; max-width: 300px; padding: 70px 20px 20px; }
